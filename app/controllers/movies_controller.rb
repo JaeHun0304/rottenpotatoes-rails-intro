@@ -20,13 +20,14 @@ class MoviesController < ApplicationController
     end
   end
 
-  def movie_title_sort
-      @movies = [Movie.order(:title), "hilite"]
-      redirect_to movies_path(@movies)
-  end
-
-  def release_date_sort
-      @movies = [Movie.order(:title), "hilite"]
+  def movie_sort
+      @selector = case params[:sort]
+      when "title"
+        @movies = [Movie.order(:title), "hilite"]
+      end
+      when "release_date"
+      @movies = [Movie.order(:release_date), "hilite"]
+      end 
       redirect_to movies_path(@movies)
   end
 
