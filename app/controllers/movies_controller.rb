@@ -24,9 +24,9 @@ class MoviesController < ApplicationController
       @selector = case params[:sort]
       when "title"
         @movies = [Movie.order(:title), "hilite"]
-      end
       when "release_date"
       @movies = [Movie.order(:release_date), "hilite"]
+      else
       end 
       redirect_to movies_path(@movies)
   end
