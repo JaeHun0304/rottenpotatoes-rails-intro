@@ -28,7 +28,8 @@ class MoviesController < ApplicationController
       @movies = [Movie.order(:release_date), "hilite"]
       else
       end 
-      redirect_to movies_path(@movies)
+      flash[:movies] = @movies
+      redirect_to movies_path
   end
 
   def new
