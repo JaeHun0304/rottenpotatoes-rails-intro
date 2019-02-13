@@ -16,10 +16,10 @@ class MoviesController < ApplicationController
     
     @css_selector1, @css_selector2 = case params[:sort]
     when "title"
-        ["hilite", nil]
+        @css_selector1 = "hilite"
         @movies = Movie.order(:title)
     when "release_date"
-        [nil, "hilite"]
+        @css_selector2 = "hilite"
         @movies = Movie.order(:release_date)
     else
     end 
