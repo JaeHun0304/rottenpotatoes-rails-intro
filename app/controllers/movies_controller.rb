@@ -28,7 +28,6 @@ class MoviesController < ApplicationController
         [Movie.order(:release_date), "hilite"]
       else
       end 
-      Movie.update
       redirect_to movies_path
   end
 
