@@ -23,12 +23,12 @@ class MoviesController < ApplicationController
   def movie_sort
       @selector = case params[:sort]
       when "title"
-        @movies = [Movie.order(:title), "hilite"]
+        [Movie.order(:title), "hilite"]
       when "release_date"
-      @movies = [Movie.order(:release_date), "hilite"]
+        [Movie.order(:release_date), "hilite"]
       else
       end 
-      flash[:movies] = @movies
+      Movie.save
       redirect_to movies_path
   end
 
