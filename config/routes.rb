@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :movies do
     collection do
-        put :movie_sort
+        get :movie_sort
     end
   end
   
