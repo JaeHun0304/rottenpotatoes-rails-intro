@@ -13,22 +13,20 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
     @all_ratings = Array.new
+    @selector = case params[:sort]
+
+    when "title"
+      [Movie.order(:title), "hilite"]
+    when "release_date"
+      [Movie.order(:release_date), "hilite"]
+    else
+    end 
+
     Movie.find_each do |movie|
       if @all_ratings.include?(movie.rating) == false
         @all_ratings.push(movie.rating)
       end
     end
-  end
-
-  def movie_sort
-      @selector = case params[:sort]
-      when "title"
-        [Movie.order(:title), "hilite"]
-      when "release_date"
-        [Movie.order(:release_date), "hilite"]
-      else
-      end 
-      redirect_to movies_path
   end
 
   def new
