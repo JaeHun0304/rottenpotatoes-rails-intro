@@ -1,5 +1,8 @@
 class MoviesController < ApplicationController
 
+  helper_method :rating_index
+
+
   def movie_params
     params.require(:movie).permit(:title, :rating, :description, :release_date)
   end
@@ -12,6 +15,13 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.order(params[:sort_param])
+    
+    @all_ratings = Array.new
+    Movie.find_each do |movie|
+      if @all_ratings.include?(movie.rating) == false
+        @all_ratings.push(movie.rating)
+      end
+    end
   end
 
   def new
