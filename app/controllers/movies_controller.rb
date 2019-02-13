@@ -13,12 +13,12 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
     @all_ratings = Array.new
+    
     @selector = case params[:sort]
-
     when "title"
-      [Movie.order(:title), "hilite"]
+      [Movie.order(:title), :class => "hilite"]
     when "release_date"
-      [Movie.order(:release_date), "hilite"]
+      [Movie.order(:release_date), :class => "hilite"]
     else
     end 
 
