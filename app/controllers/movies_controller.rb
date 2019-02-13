@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
     when "title"
       [Movie.order(:title), "hilite", nil]
     when "release_date"
-      [Movie.order(:release_date), nil "hilite"]
+      [Movie.order(:release_date), nil, "hilite"]
     else
     end 
 
