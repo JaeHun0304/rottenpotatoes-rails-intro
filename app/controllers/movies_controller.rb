@@ -24,7 +24,7 @@ class MoviesController < ApplicationController
       [Movie.order(:title), "hilite"]
   end
 
-  def release_date_title
+  def release_date_sort
       [Movie.order(:release_date), "hilite"]
   end
 
