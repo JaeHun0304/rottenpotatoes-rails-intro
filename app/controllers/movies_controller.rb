@@ -21,13 +21,13 @@ class MoviesController < ApplicationController
   end
 
   def movie_title_sort
-      @movies = [Movie.order(:title), "hilite"]
-      redirect_to movies_path
+      @movies = [Movie.order('title'), "hilite"]
+      redirect_to movies_path(@movies)
   end
 
   def release_date_sort
-      @movies = [Movie.order(:release_date), "hilite"]
-      redirect_to movies_path
+      @movies = [Movie.order('release_date'), "hilite"]
+      redirect_to movies_path(@movies)
   end
 
   def new
