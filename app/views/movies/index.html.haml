@@ -13,7 +13,7 @@
     %tr
       %th= link_to 'Movie Title', movie_title_sort_movies_path, :id => 'title_header'
       %th Rating
-      %th= link_to 'Release Date', movie_release_date_sort_movies_path, :id => 'release_date_header'
+      %th= link_to 'Release Date', release_date_sort_movies_movies_path, :id => 'release_date_header'
   %tbody
     - @movies.each do |movie|
       %tr
