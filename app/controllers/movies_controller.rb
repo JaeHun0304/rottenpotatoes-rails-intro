@@ -16,9 +16,9 @@ class MoviesController < ApplicationController
     
     @selector = case params[:sort]
     when "title"
-      [Movie.order(:title), :class => "hilite"]
+      [Movie.order(:title), "hilite"]
     when "release_date"
-      [Movie.order(:release_date), :class => "hilite"]
+      [Movie.order(:release_date), "hilite"]
     else
     end 
 
