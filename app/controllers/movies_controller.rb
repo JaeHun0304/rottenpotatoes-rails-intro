@@ -26,7 +26,7 @@ class MoviesController < ApplicationController
 
 
     Movie.find_each do |movie|
-      if @all_ratings.include?(movie.rating) == false
+      if @all_ratings.has_key?(movie.rating) == false
         @all_ratings.store(movie.rating, true)
       elsif params[:ratings] != nil
         @movies = Movie.where(rating: params[:ratings].keys)
