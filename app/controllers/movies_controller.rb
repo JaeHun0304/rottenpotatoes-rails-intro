@@ -12,8 +12,20 @@ class MoviesController < ApplicationController
 
   def index
 
+    if @movies == nil
+      @movies = Movie.all
+      @selected_movies = Movie.all
+    else
+      @movies = @selected_movies.sort_by(parmas[:sort])
+        if params[:sort] == "title"
+          @css_selector1 = "hilite"
+        elsif params[:sort] == "release_date"
+          @css_selector2 = "hilite"
+        else
+        end
+    end
+
     @all_ratings = Hash.new
-    @movies = Movie.order(params[:sort])
 
     if @all_ratings.empty? == true
       Movie.find_each do |movie|
@@ -24,20 +36,12 @@ class MoviesController < ApplicationController
     end
 
     if params[:ratings] != nil
-        @movies = Movie.where(rating: params[:ratings].keys)
+        @movies = Movie.where(rating: params[:ratings].keys).order(params[:sort])
+        @selected_movies = @movies
         
         params[:ratings].each_key do |rating| 
           @all_ratings[rating] = false
         end
-
-          if params[:sort] == "title"
-            @css_selector1 = "hilite"
-            @movies = Movie.where(rating: params[:ratings].keys).order(:title)
-          elsif params[:sort] == "release_date"
-            @css_selector2 = "hilite"
-            @movies = @movies.sort_by(:release_date).order(:release_date)
-          else
-          end
     end
 
   end
