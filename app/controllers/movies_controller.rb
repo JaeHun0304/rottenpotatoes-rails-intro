@@ -30,7 +30,7 @@ class MoviesController < ApplicationController
         @all_ratings.store(movie.rating, true)
       elsif params[:ratings] != nil
         @movies = Movie.where(rating: params[:ratings].keys)
-        params[:ratings].each do |rating| 
+        params[:ratings].each_key do |rating| 
           @all_ratings.replace(rating => false)
         end
       else
