@@ -24,12 +24,15 @@ class MoviesController < ApplicationController
     end
 
 
+
     Movie.find_each do |movie|
       if @all_ratings.include?(movie.rating) == false
         @all_ratings.store(movie.rating, true)
       elsif params[:ratings] != nil
         @movies = Movie.where(rating: params[:ratings].keys)
-        @all_ratings.store(params[:ratings].keys, false)
+        params[:ratings].each do |rating| 
+          @all_ratings.replace(rating => false)
+        end
       else
       end
     end 
