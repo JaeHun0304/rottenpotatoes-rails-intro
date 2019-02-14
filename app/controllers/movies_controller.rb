@@ -30,11 +30,11 @@ class MoviesController < ApplicationController
     end
 
     Movie.find_each do |movie|
+      @movies = movie.where(movie.rating.include?(params[:ratings].keys))
       if @all_ratings.include?(movie.rating) == false
         @all_ratings.store(movie.rating, true)
-      elsif 
-      @movies = movie.where(movie.title.include?(params[:ratings]))
       end
+    end 
   end
 
   def new
