@@ -12,8 +12,8 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
-    @all_ratings = Array.new
-    
+    @all_ratings = Hash.new
+
     if params[:sort] == "title"
         @css_selector1 = "hilite"
         @movies = Movie.order(:title)
@@ -25,7 +25,7 @@ class MoviesController < ApplicationController
 
     Movie.find_each do |movie|
       if @all_ratings.include?(movie.rating) == false
-        @all_ratings.push(movie.rating)
+        @all_ratings.store(movie.rating, true)
       end
     end
   end
