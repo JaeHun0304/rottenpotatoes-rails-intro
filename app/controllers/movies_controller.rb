@@ -23,19 +23,24 @@ class MoviesController < ApplicationController
     else
     end
 
-
+    if @all_ratings.empty? == true
+      Movie.find_each do |movie|
+        if @all_ratings.has_key?(movie.rating) == false 
+        @all_ratings.store(movie.rating, true)
+        end
+      end
+    end
 
     Movie.find_each do |movie|
-      if @all_ratings.has_key?(movie.rating) == false
-        @all_ratings.store(movie.rating, true)
-      elsif params[:ratings] != nil
+      if params[:ratings] != nil
         @movies = Movie.where(rating: params[:ratings].keys)
-        params[:ratings].each_key do |rating| 
-          @all_ratings[rating] = false
         end
-      else
-      end
-    end 
+    end
+
+    params[:ratings].each_key do |rating| 
+      @all_ratings[rating] = false
+    end
+
   end
 
   def new
