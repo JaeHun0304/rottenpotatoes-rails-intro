@@ -25,7 +25,7 @@ class MoviesController < ApplicationController
 
     @all_ratings.each_key do |key|
       if parmas[:ratings].has_key?(key) == false
-         @all_ratings.values_at(key) = false
+         @all_ratings[key] = false
       end
     end
 
