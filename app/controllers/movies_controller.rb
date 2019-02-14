@@ -33,7 +33,7 @@ class MoviesController < ApplicationController
       if @all_ratings.include?(movie.rating) == false
         @all_ratings.store(movie.rating, true)
       elsif params[:ratings] != nil
-        @movies = Movie.where(params[:ratings].has_key?(movie.rating))
+        @movies = Movie.where(rating: params[:ratings].keys)
       else
       end
     end 
