@@ -34,11 +34,10 @@ class MoviesController < ApplicationController
     Movie.find_each do |movie|
       if params[:ratings] != nil
         @movies = Movie.where(rating: params[:ratings].keys)
+        params[:ratings].each_key do |rating| 
+          @all_ratings[rating] = false
         end
-    end
-
-    params[:ratings].each_key do |rating| 
-      @all_ratings[rating] = false
+        end
     end
 
   end
