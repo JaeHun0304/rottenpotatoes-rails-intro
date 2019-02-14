@@ -29,7 +29,7 @@ class MoviesController < ApplicationController
 
     if @all_ratings.empty? == true
       Movie.find_each do |movie|
-        if @all_ratings.has_key?(movie.rating) == false 
+      if @all_ratings.has_key?(movie.rating) == false 
         @all_ratings.store(movie.rating, true)
         end
       end
@@ -40,7 +40,9 @@ class MoviesController < ApplicationController
         @selected_movies = @movies
         
         params[:ratings].each_key do |rating| 
-          @all_ratings[rating] = false
+          if @all_ratings.has_key?(rating) == false
+            @all_ratings[rating] = false
+          end
         end
     end
 
