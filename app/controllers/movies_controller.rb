@@ -31,7 +31,7 @@ class MoviesController < ApplicationController
       elsif params[:ratings] != nil
         @movies = Movie.where(rating: params[:ratings].keys)
         params[:ratings].each_key do |rating| 
-          @all_ratings.replace(rating => false)
+          @all_ratings[rating] = false
         end
       else
       end
