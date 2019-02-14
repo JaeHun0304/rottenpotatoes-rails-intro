@@ -12,7 +12,9 @@ class MoviesController < ApplicationController
 
   def index
 
+  if @movies.empty? == true
     @movies = Movie.all
+  end
     @all_ratings = Hash.new
 
     if @all_ratings.empty? == true
