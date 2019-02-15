@@ -13,8 +13,6 @@ class MoviesController < ApplicationController
   def index
     
     @all_ratings = Movie.getall_ratings
-    @given_hash = Movie.getall_ratings unless session[:ratings]
-    debugger
 
     if params[:ratings]
       session[:ratings] = params[:ratings].keys
@@ -22,6 +20,7 @@ class MoviesController < ApplicationController
       Movie.save_hash_keys(params[:ratings].keys)
     else
        @given_hash = session[:ratings]
+       @given_hash = Movie.getall_ratings unless session[:ratings]
     end
 
     if params[:sort]
