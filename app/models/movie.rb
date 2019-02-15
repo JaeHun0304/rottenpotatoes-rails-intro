@@ -12,6 +12,7 @@ class Movie < ActiveRecord::Base
 
 	def Movie.load_hash_keys
 		@@hash_keys
+		
 	end
 
 	def Movie.getall_ratings
