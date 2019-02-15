@@ -21,6 +21,7 @@ class MoviesController < ApplicationController
     else
        @given_hash = session[:ratings]
        @given_hash = Movie.getall_ratings unless session[:ratings]
+       
     end
 
     if params[:sort]
