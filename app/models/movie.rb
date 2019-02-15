@@ -5,12 +5,11 @@ class Movie < ActiveRecord::Base
 	end
 
 	def Movie.getall_ratings arg1
-		@selected_movies = Movie.all.rating.uniq
-		@selected_movies.each do |movie|
-			arg1 = movie.rating
+		movies = Movie.all
+		movies.each do |movie|
+			movies_rating = movie.rating
 		end
-
-		return arg1
+		movies_rating.uniq
 	end
 
 end
