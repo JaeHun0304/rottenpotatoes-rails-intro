@@ -7,7 +7,7 @@ class Movie < ActiveRecord::Base
 	def Movie.getall_ratings arg1
 		movies = Movie.all
 		movies.each do |movie|
-			movies_rating = movie.rating
+			movies_rating.push(movie.rating)
 		end
 		movies_rating.uniq
 	end
