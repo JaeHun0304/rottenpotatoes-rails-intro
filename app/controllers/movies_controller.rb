@@ -14,14 +14,10 @@ class MoviesController < ApplicationController
     
     @all_ratings = Movie.getall_ratings
 
-    if params[:ratings]
+
       session[:ratings] = params[:ratings].keys
-      @given_hash = params[:ratings].keys
-      Movie.save_hash_keys(params[:ratings].keys)
-    else
-       @given_hash = session[:ratings]
-       @given_hash = Movie.getall_ratings unless session[:ratings]
-    end
+      @given_hash = session[:ratings]
+      @given_hash = Movie.getall_ratings if session[:ratings] == nil
 
     if params[:sort]
       session[:sort] = params[:sort]
@@ -43,6 +39,8 @@ class MoviesController < ApplicationController
           @movies = Movie.getmovie_rating(@given_hash).order(:release_date)
           @css_selector2 = "hilite"
     else
+    end
+
     end
 
   end
