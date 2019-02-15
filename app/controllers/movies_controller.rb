@@ -14,6 +14,7 @@ class MoviesController < ApplicationController
 
     @given_hash = Movie.getall_ratings(@given_hash)
     @all_ratings = Movie.getall_ratings(@all_ratings)
+    debugger
 
     if params[:ratings] != nil
        @given_hash = params[:ratings].keys
