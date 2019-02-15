@@ -12,15 +12,15 @@ class MoviesController < ApplicationController
 
   def index
 
-    @given_hash = Movie.getall_ratings
-    @all_ratings = Movie.getall_ratings
+    @given_hash = Movie.getall_ratings(@given_hash)
+    @all_ratings = Movie.getall_ratings(@all_ratings)
 
     if params[:ratings] != nil
-       @given_hash = parmas[:ratings].keys
+       @given_hash = params[:ratings].keys
     end
 
      @movies = Movie.getmovie_rating(@given_hash)
-    
+
     if params[:sort] == "title"
           @css_selector1 = "hilite"
           @movies = Movie.getmovie_rating(@given_hash).order(:title)
