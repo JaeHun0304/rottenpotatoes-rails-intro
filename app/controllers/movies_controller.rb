@@ -13,7 +13,6 @@ class MoviesController < ApplicationController
   def index
     
     @all_ratings = Movie.getall_ratings
-    @given_hash = Movie.getall_ratings
 
     if params[:ratings] != nil
       Movie.save_hash_keys(params[:ratings].keys)
