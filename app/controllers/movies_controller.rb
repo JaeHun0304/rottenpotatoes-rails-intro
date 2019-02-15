@@ -13,13 +13,14 @@ class MoviesController < ApplicationController
   def index
     
     @all_ratings = Movie.getall_ratings
-    @given_hash = Movie.getall_ratings if session[:ratings] == nil && params[:ratings] == nil
 
-    if params[:ratings] == nil
-      @given_hash = session[:ratings]
-    else
-      @given_hash = params[:ratings]
+    if params[:ratings]
       session[:ratings] = params[:ratings].keys
+      @given_hash = params[:ratings].keys
+      Movie.save_hash_keys(params[:ratings].keys)
+    else
+       @given_hash = session[:ratings]
+       @given_hash = Movie.getall_ratings unless session[:ratings]
     end
 
     if params[:sort]
