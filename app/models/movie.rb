@@ -5,12 +5,9 @@ class Movie < ActiveRecord::Base
 	end
 
 	def Movie.getall_ratings arg1
-		@movies = Movie.all
-		arg1 = Array.new
-		@movies.each do |movie|
-			if arg1.include?(movie.rating) === false
-				arg1.push(movie.rating)
-			end
+		@selected_movies = Movie.select(:rating).distinct
+		@selected_movies.each do |movie|
+			arg1 = movie.rating
 		end
 	end
 
