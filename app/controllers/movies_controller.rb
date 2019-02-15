@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
     end
 
     @given_hash = Movie.load_hash_keys
-     @movies = Movie.getmovie_rating(@given_hash)
+    @movies = Movie.getmovie_rating(@given_hash)
 
     if params[:sort] == "title"
           @css_selector1 = "hilite"
