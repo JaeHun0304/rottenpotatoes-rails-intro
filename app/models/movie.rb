@@ -9,6 +9,8 @@ class Movie < ActiveRecord::Base
 		@selected_movies.each do |movie|
 			arg1 = movie.rating
 		end
+
+		return arg1
 	end
 
 end
