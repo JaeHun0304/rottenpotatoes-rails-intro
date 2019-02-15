@@ -12,6 +12,10 @@ class MoviesController < ApplicationController
 
   def index
 
+    if params[:ratings] == nil && params[:sort] == nil
+      @given_hash = Movie.getall_ratings(@given_hash)
+    end
+
     @given_hash = params[:ratings].keys
     @movies = Movie.getmovie_rating(@given_hash)
     @all_ratings = Movie.getall_ratings(@all_ratings)
