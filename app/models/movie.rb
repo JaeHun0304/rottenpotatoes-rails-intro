@@ -4,7 +4,15 @@ class Movie < ActiveRecord::Base
 		@result = Movie.where(rating: arg1)
 	end
 
-	def Movie.getall_ratings arg1
+	def Movie.save_hash_keys arg1
+		@@hash_keys = arg1
+	end
+
+	def Movie.load_hash_keys
+		@@hash_keys
+	end
+
+	def Movie.getall_ratings
 		movies = Movie.all
 		movies_rating = Array.new
 		movies.each do |movie|
