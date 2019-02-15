@@ -1,5 +1,7 @@
 class Movie < ActiveRecord::Base
 
+	@@hash_keys = ["G", "R", "PG-13", "PG"]
+
 	def Movie.getmovie_rating arg1
 		@result = Movie.where(rating: arg1)
 	end
