@@ -4,11 +4,12 @@ class Movie < ActiveRecord::Base
 		@result = Movie.where(rating: arg1)
 	end
 
-	def self.getall_ratings arg1
+	def self.getall_ratings
 		@movies = Movie.all
+		@all_ratings = Array.new
 		@movies.find_each do |movie|
-			if arg1.include?(movie.rating) === false
-				arg1.push(movie.rating)
+			if @all_ratings.include?(movie.rating) === false
+				@all_ratings.push(movie.rating)
 			end
 		end
 	end
