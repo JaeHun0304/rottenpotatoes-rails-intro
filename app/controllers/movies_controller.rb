@@ -41,8 +41,6 @@ class MoviesController < ApplicationController
     else
     end
 
-    end
-
   end
 
   def new
