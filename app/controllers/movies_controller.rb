@@ -14,8 +14,12 @@ class MoviesController < ApplicationController
     
     @all_ratings = Movie.getall_ratings
 
-
-      session[:ratings] = params[:ratings].keys
+      if params[:ratings] != nil
+        session[:ratings] = params[:ratings].keys
+      else
+        session[:ratings] = params[:ratings]
+      end
+      
       @given_hash = session[:ratings]
       @given_hash = Movie.getall_ratings if session[:ratings] == nil
 
