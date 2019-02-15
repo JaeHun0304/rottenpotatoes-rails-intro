@@ -6,6 +6,7 @@ class Movie < ActiveRecord::Base
 
 	def Movie.getall_ratings arg1
 		@movies = Movie.all
+		arg1 = Array.new
 		@movies.each do |movie|
 			if arg1.include?(movie.rating) === false
 				arg1.push(movie.rating)
