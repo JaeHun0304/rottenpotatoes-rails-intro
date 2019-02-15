@@ -19,6 +19,8 @@ class MoviesController < ApplicationController
        @given_hash = parmas[:ratings].keys
     end
 
+     @movies = Movie.getmovie_rating(@given_hash)
+    
     if params[:sort] == "title"
           @css_selector1 = "hilite"
           @movies = Movie.getmovie_rating(@given_hash).order(:title)
@@ -26,7 +28,6 @@ class MoviesController < ApplicationController
           @movies = Movie.getmovie_rating(@given_hash).order(:release_date)
           @css_selector2 = "hilite"
     else
-          @movies = Movie.getmovie_rating(@given_hash)
     end
 
   end
