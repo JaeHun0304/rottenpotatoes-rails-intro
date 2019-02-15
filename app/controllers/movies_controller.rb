@@ -13,15 +13,14 @@ class MoviesController < ApplicationController
   def index
     
     @all_ratings = Movie.getall_ratings
+    @given_hash = Movie.getall_ratings if session[:ratings] == nil && params[:ratings] == nil
 
-    if params[:ratings] != nil
-      session[:ratings] = params[:ratings].keys
+    if params[:ratings] == nil
+      @given_hash = session[:ratings]
     else
-      session[:ratings] = params[:ratings]
+      @given_hash = params[:ratings]
+      session[:ratings] = params[:ratings].keys
     end
-
-        @given_hash = session[:ratings]
-        @given_hash = Movie.getall_ratings if session[:ratings] == nil && params[:ratings] == nil
 
     if params[:sort]
       session[:sort] = params[:sort]
@@ -29,10 +28,6 @@ class MoviesController < ApplicationController
     else
       @sort = session[:sort]
     end
-
-#    @given_hash = Movie.load_hash_keys unless session[:ratings]
-#    @given_hash = session[:ratings]
-#    @sort = session[:sort] unless params[:sort]
 
     @movies = Movie.getmovie_rating(@given_hash)
 
