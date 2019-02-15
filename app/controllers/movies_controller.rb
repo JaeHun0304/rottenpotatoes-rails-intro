@@ -12,9 +12,8 @@ class MoviesController < ApplicationController
 
   def index
 
-    @given_hash = Movie.getall_ratings(@given_hash)
-    @movies = Movie.getmovie_rating(@given_hash)
-    @all_ratings = Movie.getall_ratings(@all_ratings)
+    @given_hash = Movie.getall_ratings
+    @all_ratings = Movie.getall_ratings
 
     if params[:ratings] != nil
        @given_hash = parmas[:ratings].keys
@@ -27,6 +26,7 @@ class MoviesController < ApplicationController
           @movies = Movie.getmovie_rating(@given_hash).order(:release_date)
           @css_selector2 = "hilite"
     else
+          @movies = Movie.getmovie_rating(@given_hash)
     end
 
   end
