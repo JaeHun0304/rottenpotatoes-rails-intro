@@ -3,7 +3,8 @@ CSCE 606 Homework 2
 JaeHun Jung
 427006046
 
-Github repo URL: 
+Github repo URL: https://github.com/JaeHun0304/rottenpotatoes-rails-intro
+Heroku app URL: https://afternoon-waters-24010.herokuapp.com/
 
 All the source code files modified by me
 
