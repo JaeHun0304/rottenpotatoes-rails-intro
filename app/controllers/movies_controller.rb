@@ -14,17 +14,31 @@ class MoviesController < ApplicationController
     
     @all_ratings = Movie.getall_ratings
 
-    if params[:ratings] != nil
+    if params[:ratings]
+      session[:ratings] = params[:ratings].keys
+      @given_hash = params[:ratings].keys
       Movie.save_hash_keys(params[:ratings].keys)
+    else
+       @given_hash = session[:ratings]
     end
 
-    @given_hash = Movie.load_hash_keys
+    if params[:sort]
+      session[:sort] = params[:sort]
+      @sort = params[:sort]
+    else
+      @sort = session[:sort]
+    end
+
+#    @given_hash = Movie.load_hash_keys unless session[:ratings]
+#    @given_hash = session[:ratings]
+#    @sort = session[:sort] unless params[:sort]
+
     @movies = Movie.getmovie_rating(@given_hash)
 
-    if params[:sort] == "title"
+    if @sort == "title"
           @css_selector1 = "hilite"
           @movies = Movie.getmovie_rating(@given_hash).order(:title)
-    elsif params[:sort] == "release_date"
+    elsif @sort == "release_date"
           @movies = Movie.getmovie_rating(@given_hash).order(:release_date)
           @css_selector2 = "hilite"
     else
