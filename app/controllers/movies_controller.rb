@@ -13,6 +13,7 @@ class MoviesController < ApplicationController
   def index
     
     @all_ratings = Movie.getall_ratings
+    @given_hash = Movie.getall_ratings unless session[:ratings]
 
     if params[:ratings]
       session[:ratings] = params[:ratings].keys
